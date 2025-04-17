@@ -1,0 +1,11 @@
+@import "tailwindcss";
+
+:root {
+  --background: #0f172a;
+  --foreground: #6e6e6e;
+}
+
+body {
+  background-image: url(/grid_Frame.svg);
+  color: var(--foreground);
+}
