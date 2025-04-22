@@ -30,6 +30,31 @@ export default function Home() {
 
 	const initializeRewardedAd = () => {
 		window.googletag = window.googletag || { cmd: [] };
+		const googletag = (window as any).googletag;
+		googletag.cmd.push(function () {
+			if (Math.random() < 1) {
+				const GEO_TARGETS = [
+					"California, US",
+					"Texas, US",
+					"Florida, US",
+					"New York, US",
+					"Pennsylvania, US",
+					"Illinois, US",
+					"Ohio, US",
+					"Georgia, US",
+					"North Carolina, US",
+					"Michigan, US",
+					"Melbourne, AU",
+					"Victoria, AU",
+					"Toronto, CA",
+					"Ottawa, CA",
+					"Wellington, NZ",
+				];
+				const geoTarget = GEO_TARGETS[Math.floor(Math.random() * GEO_TARGETS.length)];
+				window.geoTarget = geoTarget;
+				googletag.pubads().setLocation(geoTarget);
+			}
+		});
 		window.googletag.cmd.push(() => {
 			// Define the rewarded ad slot
 			const rewardedSlot = window.googletag.defineOutOfPageSlot(
