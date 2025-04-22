@@ -10,6 +10,10 @@ export default function AdUnit({ adUnitPath, sizes, id }: { adUnitPath: string, 
       
       googletag.pubads().enableSingleRequest();
       googletag.enableServices();
+      if ((window as any).geoTarget) {
+  		  googletag.pubads().setLocation((window as any).geoTarget);
+  		}
+      googletag.display(id);
     });
 
     // Load GPT script
